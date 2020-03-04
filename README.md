@@ -6,4 +6,4 @@
 
 - [x] Save items to localstorage
 - [x] Buttons for each Todo to mark them complete or remove them
-- Work on the design
+- [ ] Work on the design
