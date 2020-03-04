@@ -4,7 +4,6 @@
 
 ## Todo
 
-- Save items to localstorage
-- Buttons for each Todo to mark them complete or remove them
-- Todos can be reordered
+- [x] Save items to localstorage
+- [x] Buttons for each Todo to mark them complete or remove them
 - Work on the design
