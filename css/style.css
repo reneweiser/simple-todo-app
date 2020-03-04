@@ -14,7 +14,7 @@
 body {
     color: var(--Base3);
     background-color: var(--Base03);
-    background-image: url('./img/blank-colors-desk-electronics-370474.jpg');
+    background-image: url('../img/blank-colors-desk-electronics-370474.jpg');
     background-position: center;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
