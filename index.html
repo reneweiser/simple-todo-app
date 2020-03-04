@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Simple Todo App</title>
+</head>
+<body>
+    <div class="container">
+        <section>
+            <h1>Simple Todo App</h1>
+            <form id="todo-form">
+                <input class="form-element" type="text" name="todoName" id="todo-name-input">
+                <button class="form-element" id="add-todo" type="submit">Add</button>
+                <button class="form-element" id="clear" type="submit">Clear</button>
+            </form>
+            <h2>Todos</h2>
+            <ul id="todo-list"></ul>
+        </section>
+    </div>
+</body>
+<script src="./main.js" type="module"></script>
+</html>
