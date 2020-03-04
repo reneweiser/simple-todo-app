@@ -8,6 +8,7 @@
     --Base1: #93a1a1;
     --Base2: #eee8d5;
     --Base3: #fdf6e3;
+    --accent: rgb(196,221,138);
 }
 
 body {
@@ -36,7 +37,7 @@ p, form {
     margin-bottom: .75em;
 }
 
-button {
+.button {
     font-size: large;
     padding: .5em 1em;
     color: white;
@@ -45,8 +46,18 @@ button {
     transition: background-color .2s;
 }
 
-button:hover {
+.button:hover {
     background-color: var(--Base0);
+}
+
+.button-link {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.button-link:hover {
+    color: var(--accent);
 }
 
 input {
@@ -68,7 +79,12 @@ input:focus {
 }
 
 #todo-list {
-    margin: 2em 0;
+    margin-bottom: 2em;
+}
+
+.list-controls {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .todo {
@@ -76,6 +92,8 @@ input:focus {
     padding: 1em;
     margin: 0 .2em 1em .2em;
     box-shadow: 2px 5px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
 }
 
 .todo-text {
@@ -83,8 +101,11 @@ input:focus {
 }
 
 .done {
+    border-left: 5px solid var(--accent);
+}
+
+.done > .todo-text {
     text-decoration: line-through;
-    background-color: rgb(196,221,138);
 }
 
 #todo-form {

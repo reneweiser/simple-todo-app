@@ -1,9 +1,10 @@
 const inputField = document.querySelector('#todo-name-input');
 const itemList = document.querySelector('#todo-list');
 const addButton = document.querySelector('#add-todo');
-const clearButton = document.querySelector('#clear');
+const completeButton = document.querySelector('#complete-all');
+const clearButton = document.querySelector('#clear-all');
 
-let items = [];
+let items = JSON.parse(window.localStorage.getItem('items')) || [];
 
 function addItem(e) {
     e.preventDefault();
@@ -13,28 +14,43 @@ function addItem(e) {
     inputField.value = '';
 }
 
-function setItemComplete(e) {
+function toggleItemComplete(e) {
     let itemIndex = e.target.getAttribute('data-index');
     items[itemIndex].completed = !(items[itemIndex].completed);
     populateList(items, itemList);
     saveList(items);
 }
 
+function removeCompleted(e) {
+    e.preventDefault();
+    items = items.filter(item => !item.completed);
+    saveList(items);
+    populateList(items, itemList);
+}
+
 function populateList(items = [], itemList) {
-    clearList(itemList);
+    itemList.innerHTML = '';
     items.forEach((item, index) => {
         let newItemNode = document.createElement('li');
         newItemNode.className = `todo${item.completed ? ' done' : ''}`;
         newItemNode.id = `item-${index}`;
         newItemNode.setAttribute('data-index', index);
-        newItemNode.addEventListener('click', setItemComplete);
-        newItemNode.innerText = item.text;
+        newItemNode.addEventListener('click', toggleItemComplete);
+
+        let text = document.createElement('span');
+        text.innerText = item.text;
+        text.className = 'todo-text';
+
+        newItemNode.appendChild(text);
         itemList.appendChild(newItemNode);
     });
 }
 
-function clearList(itemList) {
-    itemList.innerHTML = '';
+function completeAll(e) {
+    e.preventDefault();
+    items.forEach(item => item.completed = true);
+    saveList(items);
+    populateList(items, itemList);
 }
 
 function saveList(items) {
@@ -43,12 +59,8 @@ function saveList(items) {
 
 addButton.addEventListener('click', addItem);
 
-clearButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    items.splice(0, items.length);
-    clearList(itemList);
-    saveList(items);
-});
+completeButton.addEventListener('click', completeAll);
 
-items = JSON.parse(window.localStorage.getItem('items'));
+clearButton.addEventListener('click', removeCompleted);
+
 populateList(items, itemList);
